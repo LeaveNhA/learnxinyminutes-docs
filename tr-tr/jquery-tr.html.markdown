@@ -6,13 +6,6 @@ contributors:
 filename: jquery.js
 ---
 
-# TODO
-
-- [x] İngilizce alanları temizle.
-- [x] Verdiğin dış-bağlantıları kontrol et.
-- [x] Yazım hataları için tekrar oku.
-- [ ] Yayınla!
-
 # Tanım
 
 jQuery, (IPA: ˈd͡ʒeɪˌkwɪəɹiː).
@@ -327,7 +320,7 @@ Diğer tüm manipülasyon fonksiyonları için resmi siteyi kontrol ediniz.
 
 ## Notlar
 
-- Yaygın bir yanlış bilineni düzeltmek adına; jQuery bir çalışma-çatısı değil, bir kütüphanedir.
+- Yaygın bir yanlış bilineni düzeltmek adına; jQuery bir çalışma-çatısı değil, bir *kütüphanedir*.
 - [Lower Camel Case][lower-camel-case-notasyonu] notasyonu için Wikipedia sayfası.
 
 ## İleri Okuma
