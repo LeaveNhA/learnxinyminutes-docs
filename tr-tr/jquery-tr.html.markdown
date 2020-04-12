@@ -36,13 +36,13 @@ Fakat, jQuery'ye giriş yapmadan önce elbetteki bu kütüphanenin üzerine kuru
 // => "ÖRNEK ÇIKTI"
 
 // *. Konsept
-jQuery DOM nesnelerini seçmek için inovatif bir yol sunar.
+// jQuery DOM nesnelerini seçmek için inovatif bir yol sunar.
 // `$` değişkeni, `jQuery` kütüphanesine işaret eder.
 // Fonksiyon notasyonu ile DOM nesnelerini elde eder
 // ve üzerinde işlemler gerçekleştirirsiniz.
 $(window)
 // => jQuery [Window] (1)
-// Bize ilgili HTML dökümanındaki window nesnesini verir.
+// Bize tarayıcının belirlediği window nesnesini verir.
 
 // 1. Seçiciler
 // Tüm nesneleri seçmek için `*` çağırımı yapılır.
