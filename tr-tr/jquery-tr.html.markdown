@@ -330,7 +330,7 @@ Diğer tüm manipülasyon fonksiyonları için resmi siteyi kontrol ediniz.
 
 - [jQuery][jquery-official-website] resmi sitesi.
 
-- [Jakob Jenkov | $(document).ready article]("http://tutorials.jenkov.com/jquery/document-ready.html")
+- [Jakob Jenkov | $(document).ready article](http://tutorials.jenkov.com/jquery/document-ready.html)
 
 [jquery-official-website]: https://jquery.com
 [ajax-wikipedia-page]: https://en.wikipedia.org/wiki/Ajax_(programming)
