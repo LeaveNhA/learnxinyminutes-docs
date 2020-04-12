@@ -1,4 +1,5 @@
 ---
+status: not-yet-finished!
 category: tool
 tool: jquery
 contributors:
