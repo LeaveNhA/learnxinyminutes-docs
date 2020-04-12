@@ -18,7 +18,7 @@ filename: jquery.js
 jQuery, (IPA: ˈd͡ʒeɪˌkwɪəɹiː).
 j + Query, olarak isimlendirilmiş, çünkü çoğunlukla HTML elementlerini sorgulamak ve onları manipüle etmek için kullanılır.
 
-jQuery, 2006 yılında geliştirilmiş ve günümüzde halen kullanımı yaygın, görece en popüler çapraz-platform JavaScript kütüphanelerinden birisidir. Şimdilerde jQuery ekibi tarafından gelişimi devam etmektedir. Dünyanın bir çok yerinden büyük şirketler ve ve bağımsız yazılım ekipleri tarafından kullanılmaktadır.
+jQuery, 2006 yılında geliştirilmiş ve günümüzde halen kullanımı yaygın, görece en popüler çapraz-platform JavaScript kütüphanelerinden birisidir. Şimdilerde jQuery ekibi tarafından gelişimi devam etmektedir. Dünyanın bir çok yerinden büyük şirketler ve bağımsız yazılım ekipleri tarafından kullanılmaktadır.
 
 Genel kullanımı animasyonlardır; Galeri, Ek menü, sayfa geçişleri, ve diğer tüm gerçeklemelere sağladığı kolaylıkla birlikte Flash'ın alternatifi olarak yorumlanabilir. [Ajax][ajax-wikipedia-page] işlemleri de dahil olmak üzere olay-yönetimi, döküman manipülasyonu ve bir çok programlama görevini kolaylaştırır.
 
