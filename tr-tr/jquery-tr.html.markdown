@@ -8,8 +8,8 @@ filename: jquery.js
 
 # TODO
 
-[ ] İngilizce alanları temizle.
-[ ] Verdiğin dış-bağlantıları kontrol et.
+[x] İngilizce alanları temizle.
+[x] Verdiğin dış-bağlantıları kontrol et.
 [ ] Yazım hataları için tekrar oku.
 [ ] Yayınla!
 
@@ -20,9 +20,9 @@ j + Query, olarak isimlendirilmiş, çünkü çoğunlukla HTML elementlerini sor
 
 jQuery, 2006 yılında geliştirilmiş ve günümüzde halen kullanımı yaygın, görece en popüler çapraz-platform JavaScript kütüphanelerinden birisidir. Şimdilerde jQuery ekibi tarafından gelişimi devam etmektedir. Dünyanın bir çok yerinden büyük şirketler ve ve bağımsız yazılım ekipleri tarafından kullanılmaktadır.
 
-Genel kullanımı animasyonlardır; Galeri, Ek menü, sayfa geçişleri, ve diğer tüm gerçeklemelere sağladığı kolaylıkla birlikte Flash'ın alternatifi olarak yorumlanabilir. Fakat [AJAX] işlemleri de dahil olmak üzere, olay-yönetimi döküman manipülasyonu ve bir çok programlama görevini kolaylaştırır.
+Genel kullanımı animasyonlardır; Galeri, Ek menü, sayfa geçişleri, ve diğer tüm gerçeklemelere sağladığı kolaylıkla birlikte Flash'ın alternatifi olarak yorumlanabilir. [Ajax][ajax-wikipedia-page] işlemleri de dahil olmak üzere olay-yönetimi, döküman manipülasyonu ve bir çok programlama görevini kolaylaştırır.
 
-Resmi sitesinden [jQuery] [dosyasını] indirip web sitenize yükleyebilirsiniz. jQuery günümüz JavaScript kütüphaneleri gibi küçültülmüş boyutlarda bulut-dağıtıcı sistemler sayesinde bağımsız olarak da sitenize eklenebilir.
+Resmi sitesinden [jQuery][jquery-official-website] [dosyasını] indirip web sitenize yükleyebilirsiniz. jQuery günümüz JavaScript kütüphaneleri gibi küçültülmüş boyutlarda bulut-dağıtıcı sistemler sayesinde bağımsız olarak da sitenize eklenebilir.
 
 Kütüphanenin kullanımı ile, jQueryUI gibi ek paketlerle gelişmiş ve modern arayüzler gerçekleyebilirsiniz.
 
@@ -36,36 +36,42 @@ Fakat, jQuery'ye giriş yapmadan önce elbetteki bu kütüphanenin üzerine kuru
 // *. Konsept
 jQuery DOM nesnelerini seçmek için inovatif bir yol sunar.
 // `$` değişkeni, `jQuery` kütüphanesine işaret eder.
-// Fonksiyon notasyonu ile DOM nesnelerini elde eder ve üzerinde işlemler gerçekleştirirsiniz.
+// Fonksiyon notasyonu ile DOM nesnelerini elde eder
+// ve üzerinde işlemler gerçekleştirirsiniz.
 $(window)
 // => jQuery [Window] (1)
 // Bize ilgili HTML dökümanındaki window nesnesini verir.
 
 // 1. Seçiciler
 // Tüm nesneleri seçmek için `*` çağırımı yapılır.
-var hepsi = $('*');
-// => jQuery [<html class="js multiplebgs boxshadow, <head>, <meta>,
+const hepsi = $('*');
+// => jQuery [<html>, <head>, <meta>,
 // .... <meta>, <title>, <meta>, <meta>,
 // .... <meta>, <link>, <link>, …] (1134) = $1
 
-// Seçiciler, jQuery'de bir nesne seçmek için kullanılırlar.
-var sayfa = $(window);
-// => sayfa, açık döküman nesnesini seçer.
+// Seçiciler, jQuery'de bir nesne seçmek için kullanılırlar,
+const sayfa = $(window);
+// => jQuery [window] (1)
+// Sayfa, açık döküman nesnesini seçer.
 
-var tumParagraflar = $('p');
+// Elementler, kendileri için seçicidirler.
+const tumParagraflar = $('p');
 // => jQuery [<p>, <p>, <p>] (3)
 
 // Seçiciler aynı zamanda CSS seçicileri olabilir.
-var mavi = $('.mavi');
-// => jQuery [<p class="mavi"] (1)
+const mavi = $('.mavi');
+// => jQuery [<p class='mavi'] (1)
 
-// Aynı zamanda birlikte kullanılabilirler.
-var maviParagraf = $('p.mavi');
-// => jQuery [<p class="mavi">] (1)
+// Aynı zamanda element ile birlikte kullanılabilirler.
+const maviParagraf = $('p.mavi');
+// => jQuery [<p class='mavi'>] (1)
 
-// Özellik seçicileri de mevcuttur, HTML nesnesinin özelliği için seçim yaparlar.
-var isimSecicisi = $("input[name*='kayit.form']");
-// => jQuery [<input name="kayit.form.sifre">, <input name="kayit.form.dogumtarihi"> ...] (10)
+// Özellik seçicileri de mevcuttur,
+// Elementin özelliği için seçim yaparlar.
+const isimSecicisi = $('input[name*="kayit.form"]');
+// => jQuery [<input name='kayit.form.sifre'>,
+//            <input name='kayit.form.dogumtarihi'> ...] (10)
+
 // Diğer özellik seçiciler;
 /*
 - Özelliğin içinde arayan; *=
@@ -79,110 +85,247 @@ var isimSecicisi = $("input[name*='kayit.form']");
 Diğer tüm seçiciler için resmi siteyi kontrol ediniz.
 */
 
-///////////////////////////////////
-// 2. Events and Effects
-// jQuery is very good at handling what happens when an event is triggered
-// A very common event used is the ready event on the document
-// You can use the 'ready' method to wait until the element has finished loading
+// 2. Olaylar ve Efektler
+// - Olaylar 
+// jQuery kullanıcı ile tarayıcı arasındaki etkileşimi olaylar ile ele alır.
+
+// En yaygın kullanımı tartışmasız ki Dökümanın Yüklenmesi olayıdır.
+
+// $.ready fonksiyonu, argüman olarak aldığı fonksiyonu,
+// seçilen eleman tamamen yüklendiğinde çağıracaktır.
 $(document).ready(function(){
-  // Code won't execute until the document is loaded
+  // Dökümanın tamamı yüklendiğine göre, iş mantığımı çağırabiliriz.
+  console.info('Döküman yüklendi!');
+})
+// => jQuery [#document] (1)
+
+// Bir dökümanın tamamının yüklenmeden,
+// herhangi bir iş mantığı çalıştırmanın
+// neden kötü bir fikir olduğunu merak ediyorsanız,
+// ileri okuma kısmına danışabilirsiniz.
+
+// Önce Olay tanımlayalım.
+
+// Tıklama olayı için `$.click` olay tetikleyicisi kullanılıyor.
+$('.mavi').click(function(){
+  // Unutmayın ki, önceden tanımlanmış
+  // bir fonksiyonu da argüman olarak verebilirsiniz.
+  console.info('Mavi butona tıkladın!');
+})
+// => jQuery [<button>, <button>, <button>, <button>, <button>, …] (365)
+
+// Çift Tıklama olayı için `$.dblclick` olay tetikleyicisi kullanılıyor.
+$('.mavi').dblclick(function(){
+  console.info('Mavi butona çift tıkladın!');
+})
+// => jQuery [<button>, <button>, <button>, <button>, <button>, …] (365)
+
+// Seçilen Elemente birden fazla tetiklenecek fonksiyon tanımalamak
+// istersek, Olayları ve Fonksiyonları Anahtar-Değer yapısı sağlayan
+// Objeleri kullanarak da çağırabiliriz.
+
+// => tetiklenecekFonksiyon
+$('.mor').on({
+  click: () => console.info('Tek tıklama ile tetiklendim!'),
+  dblclick: () => console.info('Çift tıklama ile tetiklendim!'),
+  // ...
 });
-// You can also use defined functions
-function onAction() {
-  // This is executed when the event is triggered
-}
-$('#btn').click(onAction); // Invokes onAction on click
+// => jQuery [<button>, <button>, <button>, <button>, <button>, …] (365)
 
-// Some other common events are:
-$('#btn').dblclick(onAction); // Double click
-$('#btn').hover(onAction); // Hovering over
-$('#btn').focus(onAction); // On focus
-$('#btn').blur(onAction); // Losses focus
-$('#btn').submit(onAction); // On submit
-$('#btn').select(onAction); // When an element is selected
-$('#btn').keydown(onAction); // When a key is pushed down
-$('#btn').keyup(onAction); // When a key is released
-$('#btn').keypress(onAction); // When a key is pressed
-$('#btn').mousemove(onAction); // When the mouse is moved
-$('#btn').mouseenter(onAction); // Mouse enters the element
-$('#btn').mouseleave(onAction); // Mouse leaves the element
+// Diğer olay tetikleyicileri;
+/*
+Elemente,
+- Fokus/Odaklanma; $.focus
+- Fokus/Odaklanmanın kaybedilmesi; $.blur
+- Farenin alanına girmesi; $.mouseenter
+- Farenin alanından çıkması; $.mouseleave
 
+Diğer tüm olay tetikleyicileri için resmi siteyi kontrol ediniz.
+*/
 
-// These can all also trigger the event instead of handling it
-// by simply not giving any parameters
-$('#btn').dblclick(); // Fires double click on the element
+// Tanımlanan olayları tetiklemek için,
+// Kullanıcı-Tarayıcı etkileşimi yerine elle çağrı yapmak da mümkün.
+// Tanımlama ile çağırım arasındaki fark sadece sağlanan argümanlardır.
+// Argümansız çağırım, olayı tetikler.
 
-// You can handle multiple events while only using the selector once
-$('#btn').on(
-  {dblclick: myFunction1} // Triggered on double click
-  {blur: myFunction1} // Triggered on blur
-);
+// Tıklama olayını tetiklemek için.
+$('.mavi').click();
+// => Mavi butona tıkladın!
+// => jQuery [<button>] (1) 
 
-// You can move and hide elements with some effect methods
-$('.table').hide(); // Hides the element(s)
+// Çift Tıklama olayını tetiklemek için.
+$('.mavi').dblclick();
+// => Mavi butona çift tıkladın!
+// => jQuery [<button>] (1) 
 
-// Note: calling a function in these methods will still hide the element
-$('.table').hide(function(){
-    // Element hidden then function executed
-});
+// - Efektler
+// jQuery bir çok ön-tanımlı efekt sunmakta.
+// Bu efektler, belirli parametlerle, farklı iş mantıklarını
+// gerçeklemenize izin verebilir.
+// Önce parametresiz işlevlere göz atalım.
 
-// You can store selectors in variables
-var tables = $('.table');
+// Elementleri saklayabilir,
+$('#slaytresmi').hide();
+// => jQuery [<img id='slaytresmi'>] (1)
 
-// Some basic document manipulation methods are:
-tables.hide(); // Hides element(s)
-tables.show(); // Shows (un-hides) element(s)
-tables.toggle(); // Changes the hide/show state
-tables.fadeOut(); // Fades out
-tables.fadeIn(); // Fades in
-tables.fadeToggle(); // Fades in or out
-tables.fadeTo(0.5); // Fades to an opacity (between 0 and 1)
-tables.slideUp(); // Slides up
-tables.slideDown(); // Slides down
-tables.slideToggle(); // Slides up or down
+// Gizlenen elementleri tekrar görünür yapabilir,
+$('#slaytresmi').show();
+// => jQuery [<img id='slaytresmi'>] (1)
 
-// All of the above take a speed (milliseconds) and callback function
-tables.hide(1000, myFunction); // 1 second hide animation then function
+// Yada dilediğiniz CSS niteliğini anime edebilirsiniz,
 
-// fadeTo has a required opacity as its second parameter
-tables.fadeTo(2000, 0.1, myFunction); // 2 sec. fade to 0.1 opacity then function
+// Bu parametre, anime etmek istediğiniz CSS özelliklerini
+// belirleyen Obje bilgisidir.
+// Yükseklik ve Genişlik bilgileri için değerler belirliyoruz.
+const animeEdilecekCSSOzellikleri =
+  {
+    weight: "300px",
+    height: "300px"
+  };
 
-// You can get slightly more advanced with the animate method
-tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
-// The animate method takes an object of css and values to end with,
-// optional options parameter to tune the animation,
-// and of course the callback function
+// Diğer anime edilebilir CSS özellikleri;
+/*
+Elementin,
+- Opaklık; opacity
+- Dış çevre mesafesi; margin
+- Çerçeve yüksekliği; borderWidth
+- Satır yüksekliği; lineHeight
 
-///////////////////////////////////
-// 3. Manipulation
+Diğer tüm özellikler için resmi siteyi kontrol ediniz.
+*/
 
-// These are similar to effects but can do more
-$('div').addClass('taming-slim-20'); // Adds class taming-slim-20 to all div
+// Bu parametre animasyonun süresini belirler.
+const milisaniyeCinsindenAnimasyonSuresi =
+  1200;
 
-// Common manipulation methods
-$('p').append('Hello world'); // Adds to end of element
-$('p').attr('class'); // Gets attribute
-$('p').attr('class', 'content'); // Sets attribute
-$('p').hasClass('taming-slim-20'); // Returns true if it has the class
-$('p').height(); // Gets height of element or sets height
+// Bu parametre, 'linear' yada 'swing' metin
+// bilgilerinden birini alır ve animasyonun
+// akıcılığını belirler.
+// x ∈ {'linear', 'swing'}
+const animasyonAkiciligi = 'linear';
 
+// Bu parametre, bir fonksiyondur ve
+// animasyondan sonra çağırılır.
+// Bir geri-çağırım (callback*) olarak değerlendirilebilir.
+const animasyonGeriCagirimFonksiyonu = function(){
+  console.info('Animasyon bitti!');
+};
 
-// For many manipulation methods, getting info on an element
-// will ONLY get the first matching element
-$('p').height(); // Gets only the first 'p' tag's height
+// Şimdi tanımlanan bilgilerimizle animasyonu çağırıyoruz.
+$('#slaytresmi').animate(animeEdilecekCSSOzellikleri,
+                         milisaniyeCinsindenAnimasyonSuresi,
+                         animasyonAkiciligi,
+                         animasyonGeriCagirimFonksiyonu);
+// => jQuery [<img id='slaytresmi'>] (1)
 
-// You can use each to loop through all the elements
-var heights = [];
-$('p').each(function() {
-  heights.push($(this).height()); // Adds all 'p' tag heights to array
-});
+// Kütüphane `$.animate` fonksiyonu için, anime edeceğiniz
+// CSS özellikleri dışındaki tüm argümanlar için
+// ön tanımlı değerler sağlamaktadır.
+// Bu değerler için resmi siteyi kontrol ediniz.
 
+// Diğer ön tanımlı efektler;
+/*
+Elementi,
+- Yukarı kaydırır; $.slideUp
+- Verilen saydamlık değerine anime eder; $.fadeTo
+- Görünür yada görünmez yapar (geçerli durumuna bağlı); $.toggle
 
-``**
+Diğer tüm efektler için resmi siteyi kontrol ediniz.
+*/
 
-## Notes
+// 3. Manipülasyon
 
-Yaygın bir yanlış bilineni düzeltmek adına; jQuery bir çalışma-çatısı değil, bir kütüphanedir^1.
+// jQuery'de, HTML elementlerinin isteğiniz doğrultusunda
+// değiştirilmesi için araçlar sunulmakta.
 
-## Further Reading
+// Bir ön-tanımlı CSS sınıfımız olduğunu hayal edebilirsiniz.
+// Bu sınıfı istediğimiz elemente uygulamak için,
+$('#slaytresmi').addClass('inanilmaz-bir-cerceve-sinifi');
+// => jQuery [<img id='slaytresmi' class='inanilmaz-bir-cerceve-sinifi'>] (1)
 
+// Bu CSS sınıfını istediğimiz zaman silebiliriz,
+$('#slaytresmi').removeClass('inanilmaz-bir-cerceve-sinifi');
+// => jQuery [<img id='slaytresmi'>] (1)
+
+// Bu HTML elementini, istediğimiz başka bir element ile çevreleyebiliriz,
+$('#slaytresmi').wrap('<div class="farkli-bir-cerceve"></div>');
+// => jQuery [<img id='slaytresmi'>] (1)
+// Sonucun gözlemlenebilmesi için, elementin çevreleme işlemi sonrası
+// döküman üzerindeki yapısını temel bir seçici ile gözlemleyebiliriz;
+$('.farli-bir-cerceve')
+// => jQuery [<div class='farkli-bir-cerceve>] (1)
+// => <div class="farkli-bir-cerceve">
+//      <img id='slaytresmi'>
+//    </div>
+
+// Elemente içerik ekleyebiliriz,
+// Eklemeler döküman içeriğinin sonuna yapılacaktır.
+// Bu süreci daha iyi gözlemleyebilmek için içeriğine bakmamız yeterli,
+// Ekleme öncesinde;
+$('.farkli-bir-cerceve');
+// => jQuery [<div class='farkli-bir-cerceve>] (1)
+// => <div class="farkli-bir-cerceve">
+//      <img id='slaytresmi'>
+//    </div>
+
+// `$.append` fonksiyonu ile ekleme işlemini yapıyoruz.
+$('.farkli-bir-cerceve').append('<h1>Bu çerçeve farklı!</h1>');
+// => jQuery [<div class='farkli-bir-cerceve>] (1)
+// => <div class="farkli-bir-cerceve">
+//      <img id='slaytresmi'>
+//      <h1>Bu çerçeve farklı!</h1>
+//    </div>
+
+// Dökümandan element silebiliriz,
+$('.farkli-bir-cerceve > h1').remove();
+// => jQuery [<h1>] (1)
+
+// Dökümanın güncel halini görmek için seçiciyi çağırıyoruz,
+$('.farkli-bir-cerceve');
+// => jQuery [<div class='farkli-bir-cerceve>] (1**
+// => <div class="farkli-bir-cerceve">
+//      <img id='slaytresmi'>
+//    </div>
+
+// Elementlerin özniteliklerini değiştirebilir yada
+// silebiliriz.
+// Öznitelik erişici ve değiştiricisi,
+// Bir fonksiyon notasyonuyla yapılanmış durumda.
+// Eğer bir öznitelik bilgisini almak istiyorsak, ilgili öznitelik
+// ismini;
+
+$('.farkli-bir-cerceve > img').attr('id');
+// => 'slaytresmi'
+
+// Eğer bir öznitelik bilgisini güncellemek istiyorsak,
+// ilgili öznitelik ismi ve sonrasında yeni değerini argüman
+// olarak $.attr fonksiyonuna iletiyoruz;
+
+$('.farkli-bir-cerceve > img').attr('id', 'cercevelislaytresmi');
+// => jQuery [<img id='cercevelislaytresmi'>] (1)
+
+// Diğer ön fonksiyonlar;
+/*
+Elementin,
+- Yükseklik değeri, $.height
+- HTML döküman içeriği, $.html
+- Girdi içeriği, $.val
+- Verilen CSS sınıfına sahipliği, $.hasClass
+
+Diğer tüm manipülasyon fonksiyonları için resmi siteyi kontrol ediniz.
+*/
+
+```
+
+## Notlar
+
+- Yaygın bir yanlış bilineni düzeltmek adına; jQuery bir çalışma-çatısı değil, bir kütüphanedir.
+
+## İleri Okuma
+
+### İngilizce
+
+- [Jakob Jenkov | $(document).ready article]("http://tutorials.jenkov.com/jquery/document-ready.html")
+
+[jquery-official-website]: https://jquery.com
+[ajax-wikipedia-page]: https://en.wikipedia.org/wiki/Ajax_(programming)
