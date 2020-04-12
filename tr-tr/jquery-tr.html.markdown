@@ -8,10 +8,10 @@ filename: jquery.js
 
 # TODO
 
-[x] İngilizce alanları temizle.
-[x] Verdiğin dış-bağlantıları kontrol et.
-[ ] Yazım hataları için tekrar oku.
-[ ] Yayınla!
+- [x] İngilizce alanları temizle.
+- [x] Verdiğin dış-bağlantıları kontrol et.
+- [ ] Yazım hataları için tekrar oku.
+- [ ] Yayınla!
 
 # Tanım
 
