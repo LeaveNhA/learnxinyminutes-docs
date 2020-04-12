@@ -10,7 +10,7 @@ filename: jquery.js
 
 - [x] İngilizce alanları temizle.
 - [x] Verdiğin dış-bağlantıları kontrol et.
-- [ ] Yazım hataları için tekrar oku.
+- [x] Yazım hataları için tekrar oku.
 - [ ] Yayınla!
 
 # Tanım
@@ -20,18 +20,26 @@ j + Query, olarak isimlendirilmiş, çünkü çoğunlukla HTML elementlerini sor
 
 jQuery, 2006 yılında geliştirilmiş ve günümüzde halen kullanımı yaygın, görece en popüler çapraz-platform JavaScript kütüphanelerinden birisidir. Şimdilerde jQuery ekibi tarafından gelişimi devam etmektedir. Dünyanın bir çok yerinden büyük şirketler ve bağımsız yazılım ekipleri tarafından kullanılmaktadır.
 
-Genel kullanımı animasyonlardır; Galeri, Ek menü, sayfa geçişleri, ve diğer tüm gerçeklemelere sağladığı kolaylıkla birlikte Flash'ın alternatifi olarak yorumlanabilir. [Ajax][ajax-wikipedia-page] işlemleri de dahil olmak üzere olay-yönetimi, döküman manipülasyonu ve bir çok programlama görevini kolaylaştırır.
+Genel kullanım amacı animasyonlardır; Galeri, ek menü, sayfa geçişleri, ve diğer tüm gerçeklemelere sağladığı kolaylıkla birlikte Flash'ın alternatifi olarak yorumlanabilir. [Ajax][ajax-wikipedia-page] işlemleri de dahil olmak üzere olay-yönetimi, döküman manipülasyonu ve bir çok programlama görevini kolaylaştırır.
 
-Resmi sitesinden [jQuery][jquery-official-website] [dosyasını] indirip web sitenize yükleyebilirsiniz. jQuery günümüz JavaScript kütüphaneleri gibi küçültülmüş boyutlarda bulut-dağıtıcı sistemler sayesinde bağımsız olarak da sitenize eklenebilir.
+Resmi sitesinden ([jQuery][jquery-official-website]) indirip web sitenize yükleyebilirsiniz. jQuery günümüz JavaScript kütüphaneleri gibi, küçültülmüş boyutlarda bulut tabanlı İçerik Dağıtım Ağı sistemleri sayesinde bağımsız olarak da sitenize eklenebilir.
 
 Kütüphanenin kullanımı ile, jQueryUI gibi ek paketlerle gelişmiş ve modern arayüzler gerçekleyebilirsiniz.
 
-Fakat, jQuery'ye giriş yapmadan önce elbetteki bu kütüphanenin üzerine kurulduğu teknoloji olan [JavaScript'i öğrenmelisiniz].
+Fakat, jQuery'ye giriş yapmadan önce elbetteki bu kütüphanenin üzerine kurulduğu teknoloji olan [JavaScript'i öğrenmelisiniz][javascript-learnxinyminutes-page].
 
 ```js
 
-// Bu belgedeki değişken isimleri Türkçe, ve [CamelCase] notasyonu uygulamaktadır.
-// Bu belgedeki kod parçalarının çıktıları, onları uyguladığınız dökümanın içeriğine bağlı olarak değişmektedir.
+// Bu belgedeki değişken isimleri Türkçe,
+// ve [Lower Camel Case] notasyonu uygulamaktadır.
+// Bu belgedeki kod parçalarının çıktıları,
+// onları uyguladığınız dökümanın içeriğine bağlı olarak değişmektedir.
+
+// Döküman boyunca, aşağıdaki gösterimde
+// Kod - Çıktı ikilisi ile içeriğin anlamlandırılması
+// kolaylaştırılmaya çalışmıştır.
+// ornek_kod_parcasi();
+// => "ÖRNEK ÇIKTI"
 
 // *. Konsept
 jQuery DOM nesnelerini seçmek için inovatif bir yol sunar.
@@ -320,12 +328,17 @@ Diğer tüm manipülasyon fonksiyonları için resmi siteyi kontrol ediniz.
 ## Notlar
 
 - Yaygın bir yanlış bilineni düzeltmek adına; jQuery bir çalışma-çatısı değil, bir kütüphanedir.
+- [Lower Camel Case][lower-camel-case-notasyonu] notasyonu için Wikipedia sayfası.
 
 ## İleri Okuma
 
 ### İngilizce
 
+- [jQuery][jquery-official-website] resmi sitesi.
+
 - [Jakob Jenkov | $(document).ready article]("http://tutorials.jenkov.com/jquery/document-ready.html")
 
 [jquery-official-website]: https://jquery.com
 [ajax-wikipedia-page]: https://en.wikipedia.org/wiki/Ajax_(programming)
+[javascript-learnxinyminutes-page]: https://learnxinyminutes.com/docs/javascript/
+[lower-camel-case-notasyonu]: https://en.wikipedia.org/wiki/Camel_case#Programming_and_coding
